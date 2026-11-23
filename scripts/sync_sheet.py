@@ -28,7 +28,7 @@ FIX = {
 }
 SWAP_EN = {'very','wife','live','in.','she is','there is','well'}  # rows where the columns were typed the wrong way round
 SKIP = {('late','e'):'French cell is just "e"', ('you','yu'):'typo duplicate of "tu"', ('ah','ah'):'not a word',
-        ('right','ma'):'"ma" does not mean "right"', ('neveu',''):'no translation (already listed as nephew)'}
+        ('right','ma'):'"ma" does not mean "right"', ('neveu',''):'no translation (already listed as nephew)', ('he','ill'):'typo duplicate of il'}
 
 def norm(s): return re.sub(r'[\s]+','',(s or '').strip().lower())
 def strip_acc(s): return ''.join(c for c in unicodedata.normalize('NFD',s) if unicodedata.category(c)!='Mn')
