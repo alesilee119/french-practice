@@ -24,11 +24,11 @@ FIX = {
  'ouest':'où est','ou':'où','canape':'canapé','adore':'adore','idee':'idée','sault':'salut','cavabien':'ça va bien',
  'commenttutappelles':"comment tu t'appelles ?",'jhabite':"j'habite",'japonais':'japonais','portugaise':'portugaise',
  'portefeuile':'portefeuille','amusante(she)':'amusante','amusant(he)':'amusant','unesoeur':'une sœur','soeur':'sœur',
- 'masoeur':'ma sœur','jadore':"j'adore",'retard':'en retard','ta':'est','parles':'parles',
+ 'masoeur':'ma sœur','jadore':"j'adore",'retard':'en retard','ta':'est','parles':'parles','cest':"c'est",
 }
 SWAP_EN = {'very','wife','live','in.','she is','there is','well'}  # rows where the columns were typed the wrong way round
 SKIP = {('late','e'):'French cell is just "e"', ('you','yu'):'typo duplicate of "tu"', ('ah','ah'):'not a word',
-        ('right','ma'):'"ma" does not mean "right"', ('neveu',''):'no translation (already listed as nephew)', ('he','ill'):'typo duplicate of il'}
+        ('right','ma'):'"ma" does not mean "right"', ('neveu',''):'no translation (already listed as nephew)', ('he','ill'):'typo duplicate of il', ('little','peu'):'duplicate of existing bit/peu'}
 
 def norm(s): return re.sub(r'[\s]+','',(s or '').strip().lower())
 def strip_acc(s): return ''.join(c for c in unicodedata.normalize('NFD',s) if unicodedata.category(c)!='Mn')
@@ -71,7 +71,7 @@ def parse(path):
             if meaning.lower()=='or': say='ou'
             say={'a':'à','RAPIDE':'rapide',"qu'elle":"qu'elle est"}.get(say,say)
             say=say[0].lower()+say[1:] if say[:1].isupper() and say not in ('Louis','Londres','Tokyo','Madrid','Monsieur') else say
-            meaning={'Let go':"Let's go",'Eat':"Let's eat",'In':'In / at (a city)','Lives':'Lives (he/she)','Have':'Have (you)'}.get(meaning,meaning)
+            meaning={'Let go':"Let's go",'Eat':"Let's eat",'In':'In / at (a city)','Lives':'Lives (he/she)','Have':'Have (you)','Neighbour':'Neighborhood'}.get(meaning,meaning)
         d=seen.setdefault(cur,set())
         if say.lower() in d: skipped.append((i,en,fr,'duplicate')); continue
         d.add(say.lower()); cats[cur]['w'].append({'fr':say,'en':meaning,'ph':ph})
