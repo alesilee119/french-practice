@@ -71,7 +71,7 @@ def parse(path):
             if meaning.lower()=='or': say='ou'
             say={'a':'à','RAPIDE':'rapide',"qu'elle":"qu'elle est"}.get(say,say)
             say=say[0].lower()+say[1:] if say[:1].isupper() and say not in ('Louis','Londres','Tokyo','Madrid','Monsieur') else say
-            meaning={'Let go':"Let's go",'Eat':"Let's eat",'In':'In / at (a city)','Lives':'Lives (he/she)','Have':'Have (you)','Neighbour':'Neighborhood'}.get(meaning,meaning)
+            meaning={'Let go':"Let's go",'Eat':"Let's eat",'In':'In / at (a city)','Lives':'Lives (he/she)','Have':'Have (you)','Neighbour':'Neighborhood','Calm / quite':'Calm / quiet'}.get(meaning,meaning)
         d=seen.setdefault(cur,set())
         if say.lower() in d: skipped.append((i,en,fr,'duplicate')); continue
         d.add(say.lower()); cats[cur]['w'].append({'fr':say,'en':meaning,'ph':ph})
