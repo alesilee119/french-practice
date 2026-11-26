@@ -25,8 +25,9 @@ FIX = {
  'commenttutappelles':"comment tu t'appelles ?",'jhabite':"j'habite",'japonais':'japonais','portugaise':'portugaise',
  'portefeuile':'portefeuille','amusante(she)':'amusante','amusant(he)':'amusant','unesoeur':'une sœur','soeur':'sœur',
  'masoeur':'ma sœur','jadore':"j'adore",'retard':'en retard','ta':'est','parles':'parles','cest':"c'est",
+ 'labas':'là-bas','la-bas':'là-bas','ecole':'école',
 }
-SWAP_EN = {'very','wife','live','in.','she is','there is','well'}  # rows where the columns were typed the wrong way round
+SWAP_EN = {'very','wife','live','in.','she is','there is','well','school'}  # rows where the columns were typed the wrong way round
 SKIP = {('late','e'):'French cell is just "e"', ('you','yu'):'typo duplicate of "tu"', ('ah','ah'):'not a word',
         ('right','ma'):'"ma" does not mean "right"', ('neveu',''):'no translation (already listed as nephew)', ('he','ill'):'typo duplicate of il', ('little','peu'):'duplicate of existing bit/peu'}
 
@@ -72,6 +73,7 @@ def parse(path):
             say={'a':'à','RAPIDE':'rapide',"qu'elle":"qu'elle est"}.get(say,say)
             say=say[0].lower()+say[1:] if say[:1].isupper() and say not in ('Louis','Londres','Tokyo','Madrid','Monsieur') else say
             meaning={'Let go':"Let's go",'Eat':"Let's eat",'In':'In / at (a city)','Lives':'Lives (he/she)','Have':'Have (you)','Neighbour':'Neighborhood','Calm / quite':'Calm / quiet'}.get(meaning,meaning)
+            if say.lower()=='voisine' and meaning.lower()=='neighbor': meaning='Neighbor (female)'
         d=seen.setdefault(cur,set())
         if say.lower() in d: skipped.append((i,en,fr,'duplicate')); continue
         d.add(say.lower()); cats[cur]['w'].append({'fr':say,'en':meaning,'ph':ph})
