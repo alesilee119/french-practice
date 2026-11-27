@@ -27,7 +27,7 @@ FIX = {
  'masoeur':'ma sœur','jadore':"j'adore",'retard':'en retard','ta':'est','parles':'parles','cest':"c'est",
  'labas':'là-bas','la-bas':'là-bas','ecole':'école',
 }
-SWAP_EN = {'very','wife','live','in.','she is','there is','well','school'}  # rows where the columns were typed the wrong way round
+SWAP_EN = {'very','wife','live','in.','she is','there is','well','school','italian'}  # rows where the columns were typed the wrong way round
 SKIP = {('late','e'):'French cell is just "e"', ('you','yu'):'typo duplicate of "tu"', ('ah','ah'):'not a word',
         ('right','ma'):'"ma" does not mean "right"', ('neveu',''):'no translation (already listed as nephew)', ('he','ill'):'typo duplicate of il', ('little','peu'):'duplicate of existing bit/peu'}
 
